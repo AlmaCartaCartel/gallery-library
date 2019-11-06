@@ -1,19 +1,19 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import { Provider } from "react-redux";
 
-import UnsplashService from "./service/service";
-import { UnsplashProvider } from "./components/unspalsh-context/unsplash-context";
+import store from "./redux/store";
 import Root from "./components/root/root";
-
-const unsplashService = new UnsplashService();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <UnsplashProvider value={unsplashService}>
+    // предоставляет доступ к redux store
+    <Provider store={store}>
+      <View style={styles.container}>
+        {/* Основной компонент */}
         <Root />
-      </UnsplashProvider>
-    </View>
+      </View>
+    </Provider>
   );
 }
 

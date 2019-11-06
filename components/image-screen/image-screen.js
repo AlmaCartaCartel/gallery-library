@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { View, Image, StyleSheet } from "react-native";
+import { connect } from "react-redux";
 
 class ImageScreen extends Component {
   static navigationOptions = {
     title: "Image"
   };
   render() {
-    const {
-      large_image = "https://images.unsplash.com/photo-1562887085-d0aa7ff20b95?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjMyNDU2fQ"
-    } = this.props;
+    const { large_image } = this.props;
 
     return (
       <View style={styles.container}>
@@ -26,8 +25,14 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   image: {
-    height: 200
+    flex: 1
   }
 });
+// Получене адреса выбраного изображения
+const mapStateToProps = ({ large_image }) => {
+  return {
+    large_image
+  };
+};
 
-export default ImageScreen;
+export default connect(mapStateToProps)(ImageScreen);

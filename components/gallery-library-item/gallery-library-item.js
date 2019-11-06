@@ -6,19 +6,11 @@ import {
   StyleSheet,
   TouchableNativeFeedback
 } from "react-native";
-
+// Компоонент отвечающий за отрисовку одного пункта списка изображений
 class GalleryItem extends Component {
   render() {
-    const thmb =
-      "https://images.unsplash.com/photo-1562887085-d0aa7ff20b95?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjMyNDU2fQ";
-
-    const {
-      name = "Name",
-      author = "Author",
-      thumbnail = thmb,
-      onClickToImage
-    } = this.props;
-
+    const { image:{name, author, thumbnail} , onClickToImage} = this.props;
+    
     return (
       <View style={styles.container}>
         <TouchableNativeFeedback onPress={onClickToImage}>
